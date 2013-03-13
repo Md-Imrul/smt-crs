@@ -2,5 +2,62 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="edu.umkci.imrul.crs.student" name="EPStudent" schema="schema/edu.umkci.imrul.crs.student.exsd"/>
+   <extension-point id="edu.umkc.imrul.crs.datasource" name="Data source" schema="schema/edu.umkc.imrul.crs.datasource.exsd"/>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="edu.umkc.imrul.crs.commands.category"
+            name="Sample Category">
+      </category>
+      <command
+            categoryId="edu.umkc.imrul.crs.commands.category"
+            id="edu.umkc.imrul.crs.commands.sampleCommand"
+            name="Sample Command">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="edu.umkc.imrul.crs.handlers.SampleHandler"
+            commandId="edu.umkc.imrul.crs.commands.sampleCommand">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="edu.umkc.imrul.crs.commands.sampleCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+6">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="edu.umkc.imrul.crs.menus.sampleMenu"
+               label="Sample Menu"
+               mnemonic="M">
+            <command
+                  commandId="edu.umkc.imrul.crs.commands.sampleCommand"
+                  id="edu.umkc.imrul.crs.menus.sampleCommand"
+                  mnemonic="S">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="edu.umkc.imrul.crs.toolbars.sampleToolbar">
+            <command
+                  commandId="edu.umkc.imrul.crs.commands.sampleCommand"
+                  icon="icons/sample.gif"
+                  id="edu.umkc.imrul.crs.toolbars.sampleCommand"
+                  tooltip="Say hello world">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
 
 </plugin>
